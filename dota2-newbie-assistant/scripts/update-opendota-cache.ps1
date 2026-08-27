@@ -8,7 +8,7 @@ $targetDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
 New-Item -ItemType Directory -Force -Path $targetDirectory | Out-Null
 
 $headers = @{
-    "User-Agent" = "dota2-newbie-assistant/0.1 (OpenDota cache updater)"
+    "User-Agent" = "dota2-newbie-assistant/0.4.0 (OpenDota cache updater)"
 }
 
 $endpoints = [ordered]@{

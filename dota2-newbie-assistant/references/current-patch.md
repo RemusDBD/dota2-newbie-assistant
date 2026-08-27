@@ -6,7 +6,7 @@
 - Valve 版本页：https://www.dota2.com/patches/7.41e
 - Liquipedia 版本入口：https://liquipedia.net/dota2/Game_Versions
 
-所有回答第一行或结尾应显示“适用版本 7.41e”。极速语音只读出一次版本号，不朗读网址。
+所有回答首行应把 Skill 版本与游戏版本分开显示，例如“助手 v0.4.0｜Dota 7.41e”。极速语音只读出一次版本，不朗读网址。
 
 ## 版本规则
 
