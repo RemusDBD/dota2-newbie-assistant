@@ -15,7 +15,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 $headers = @{
-    "User-Agent" = "dota2-newbie-assistant/0.4.0 (OpenDota evidence lookup)"
+    "User-Agent" = "dota2-newbie-assistant/0.5.0 (OpenDota evidence lookup)"
 }
 
 $matchupsUri = "https://api.opendota.com/api/heroes/$HeroId/matchups"

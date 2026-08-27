@@ -3,7 +3,7 @@ name: dota2-newbie-assistant
 description: 为 Dota 2 新手根据中文语音、文字或阵容截图生成本局技能加点、出装路线、对线技巧、英雄克制、关键技能应对、功能消耗品与前中后期视野建议。用户说“Dota速报”、报出自己的英雄/位置/对线对手、粘贴选人截图，或在对局中询问加点、真假眼、粉、榴弹、下一件装备和打法时使用。不用于职业级 BP、博彩预测、代打或自动操作游戏。
 metadata:
   short-description: Dota 2 新手本局加点、出装、视野与团战助手
-  version: "0.4.0"
+  version: "0.5.0"
 ---
 
 # Dota 2 新手助手
@@ -13,8 +13,8 @@ metadata:
 ## 先判断模式
 
 - **极速语音**：用户说“Dota速报”“速报”“开局”，或只报出自己的英雄、位置和本路对手。立即回答，不联网、不运行脚本、不追问完整阵容。读取 [current-patch.md](references/current-patch.md) 和 [modes-and-output.md](references/modes-and-output.md)。
-- **截图战局简报**：用户粘贴选人或阵容截图。识别双方英雄并用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手，默认输出短简报，不自动生成长报告。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md)、[vision-and-consumables.md](references/vision-and-consumables.md) 和 [modes-and-output.md](references/modes-and-output.md)。
-- **文字战局简报**：用户给出自己的英雄、对线对手或双方阵容时，按截图战局简报处理。
+- **截图分层攻略**：用户粘贴选人或阵容截图。识别双方英雄并用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手，默认按“极简结论 + 必要展开”输出。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md)、[vision-and-consumables.md](references/vision-and-consumables.md) 和 [modes-and-output.md](references/modes-and-output.md)。
+- **文字分层攻略**：用户给出自己的英雄、对线对手或双方阵容时，按截图分层攻略处理。
 - **详细攻略/复盘**：只有用户明确说“详细攻略、展开、复盘、解释依据”时才输出分阶段长版；游戏开始、对线中和局中求助不自动进入此模式。
 - **局中求助**：用户报时间、当前装备、局势或某个肥起来的敌人。只回答“下一件装备、当前功能品/视野、接下来3分钟、团战动作”四个问题，不重写整份攻略。
 - **数据依据**：只有用户要求数据、权威性、胜率、样本或详细分析时，才读取 [sources-and-evidence.md](references/sources-and-evidence.md)，并在工具可用时查询或运行脚本。不得为了极速回答等待网络。
@@ -44,7 +44,7 @@ metadata:
 8. 前中后期各给一个主任务、一个视野区域、一个团战动作和一个常见错误。
 9. 对新手优先推荐容错高、用途清楚、容易按出来的方案；高风险贪装必须标出代价。
 
-上述步骤用于内部筛选，不代表全部写进回答。默认只输出最重要的一条主线、一个条件分支、1～2个关键威胁和一个当前眼位；其余内容等用户追问。
+上述步骤用于内部筛选，不代表平均分配篇幅。每个主题先写一行可直接照做的极简结论，再补 1～3 条原因、操作或调整条件；威胁与装备仍按优先级过滤，不堆完整清单。
 
 详细判断矩阵见 [beginner-decision-rules.md](references/beginner-decision-rules.md)；加点、克制与技能规避规则见 [skills-and-counterplay.md](references/skills-and-counterplay.md)；路人局功能品和眼位规则见 [vision-and-consumables.md](references/vision-and-consumables.md)。
 
@@ -63,11 +63,11 @@ metadata:
 
 ## 回答风格
 
-先给结论，短句，装备使用游戏内常见中文名。默认不使用表格、长解释、长链接、多级标题或完整阵容逐人点评。每行只解决一个问题，条件分支最多一个；用户没有要求依据时不展开数据来源。具体长度和结构见 [modes-and-output.md](references/modes-and-output.md)。
+采用“两层阅读”：只扫每节的粗体结论就能开打，有时间再看下面 1～3 条细节。装备使用游戏内常见中文名；默认使用清晰的小标题与留白，不使用表格、密集长段落或完整阵容逐人点评。细节必须解释本局原因或触发条件，不能重复结论换一种说法。具体结构见 [modes-and-output.md](references/modes-and-output.md)。
 
 ## Skill 版本
 
-- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.4.0｜Dota 7.41e`。
+- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.5.0｜Dota 7.41e`。
 - 每份游戏攻略首行显示这两个版本；不要在局中正文展开 Changelog。
-- 维护本 Skill 时先读取 [CHANGELOG.md](CHANGELOG.md)。新增能力提升次版本，例如 `0.4.0 → 0.5.0`；小修正提升修订版本，例如 `0.4.0 → 0.4.1`；不兼容的输出或结构变化才提升主版本。
+- 维护本 Skill 时先读取 [CHANGELOG.md](CHANGELOG.md)。新增能力提升次版本，例如 `0.5.0 → 0.6.0`；小修正提升修订版本，例如 `0.5.0 → 0.5.1`；不兼容的输出或结构变化才提升主版本。
 - 每次提交功能或规则更新时，同步修改 `metadata.version`、相关界面提示以及 Changelog；同一次更新只记录一个版本。

@@ -1,5 +1,5 @@
 interface:
   display_name: "Dota 2 新手助手"
-  short_description: "v0.4.0｜语音或截图生成简洁的加点、出装、克制与视野速报"
+  short_description: "v0.5.0｜语音或截图生成结论先行、详略分层的本局攻略"
   brand_color: "#D35445"
-  default_prompt: "使用 $dota2-newbie-assistant，根据我的英雄、位置和对线对手生成一份10行以内的本局速报。"
+  default_prompt: "使用 $dota2-newbie-assistant，根据我的英雄、位置和对线对手生成一份每节先给极简结论、再展开必要细节的本局攻略。"
