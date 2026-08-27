@@ -1,13 +1,22 @@
 {
-  "fetchedAtUtc": "2026-08-27T06:06:51.3381452Z",
-  "provider": "OpenDota",
-  "apiBase": "https://api.opendota.com/api",
+  "fetchedAtUtc": "2026-08-27T07:51:42.6862804Z",
+  "provider": "OpenDota + Valve Dota 2 datafeed",
+  "providers": [
+    "OpenDota",
+    "Valve Dota 2 datafeed"
+  ],
+  "apiBases": [
+    "https://api.opendota.com/api",
+    "https://www.dota2.com/datafeed"
+  ],
   "files": [
     "hero-stats.json",
     "heroes.json",
     "items.json",
     "hero-abilities.json",
-    "abilities.json"
+    "abilities.json",
+    "heroes-schinese.json",
+    "items-schinese.json"
   ],
-  "scopeNote": "Public OpenDota snapshots; not automatically filtered to patch, role, rank, or beginner bracket."
+  "scopeNote": "Public OpenDota snapshots plus Valve Simplified Chinese hero and item names; statistics are not automatically filtered to patch, role, rank, or beginner bracket."
 }

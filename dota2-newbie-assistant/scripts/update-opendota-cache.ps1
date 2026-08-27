@@ -8,7 +8,7 @@ $targetDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
 New-Item -ItemType Directory -Force -Path $targetDirectory | Out-Null
 
 $headers = @{
-    "User-Agent" = "dota2-newbie-assistant/0.5.0 (OpenDota cache updater)"
+    "User-Agent" = "dota2-newbie-assistant/0.6.0 (data cache updater)"
 }
 
 $endpoints = [ordered]@{
@@ -17,6 +17,8 @@ $endpoints = [ordered]@{
     "items.json"          = "https://api.opendota.com/api/constants/items"
     "hero-abilities.json" = "https://api.opendota.com/api/constants/hero_abilities"
     "abilities.json"      = "https://api.opendota.com/api/constants/abilities"
+    "heroes-schinese.json" = "https://www.dota2.com/datafeed/herolist?language=schinese"
+    "items-schinese.json"   = "https://www.dota2.com/datafeed/itemlist?language=schinese"
 }
 
 $writtenFiles = @()
@@ -33,10 +35,11 @@ foreach ($entry in $endpoints.GetEnumerator()) {
 
 $metadata = [ordered]@{
     fetchedAtUtc = [DateTime]::UtcNow.ToString("o")
-    provider = "OpenDota"
-    apiBase = "https://api.opendota.com/api"
+    provider = "OpenDota + Valve Dota 2 datafeed"
+    providers = @("OpenDota", "Valve Dota 2 datafeed")
+    apiBases = @("https://api.opendota.com/api", "https://www.dota2.com/datafeed")
     files = $writtenFiles
-    scopeNote = "Public OpenDota snapshots; not automatically filtered to patch, role, rank, or beginner bracket."
+    scopeNote = "Public OpenDota snapshots plus Valve Simplified Chinese hero and item names; statistics are not automatically filtered to patch, role, rank, or beginner bracket."
 }
 
 $metadataPath = Join-Path $targetDirectory "cache-metadata.json"
