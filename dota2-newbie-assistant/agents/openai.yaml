@@ -1,0 +1,5 @@
+interface:
+  display_name: "Dota 2 新手助手"
+  short_description: "基于语音或截图提供新手出装、对线、局中决策与团战速报"
+  brand_color: "#D35445"
+  default_prompt: "使用 $dota2-newbie-assistant，根据我的英雄、位置和对线对手生成一份新手本局速报。"

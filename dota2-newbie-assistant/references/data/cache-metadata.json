@@ -1,0 +1,11 @@
+{
+  "fetchedAtUtc": "2026-08-27T04:58:07.6099809Z",
+  "provider": "OpenDota",
+  "apiBase": "https://api.opendota.com/api",
+  "files": [
+    "hero-stats.json",
+    "heroes.json",
+    "items.json"
+  ],
+  "scopeNote": "Public OpenDota snapshots; not automatically filtered to patch, role, rank, or beginner bracket."
+}
