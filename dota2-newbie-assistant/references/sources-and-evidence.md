@@ -15,10 +15,22 @@ Liquipedia 自动访问必须使用其 API，不能抓取生成后的 HTML；尽
 - `/api/heroStats`：英雄总体公开统计快照。
 - `/api/constants/heroes`：英雄 ID 与基础常量。
 - `/api/constants/items`：物品 ID 与基础常量。
+- `/api/constants/hero_abilities`：英雄与技能标识的映射。
+- `/api/constants/abilities`：技能名称、说明和部分结构化常量。
 - `/api/heroes/{hero_id}/matchups`：指定英雄的总体对位记录。
 - `/api/heroes/{hero_id}/itemPopularity`：物品流行度原始计数。
 
 这些公共端点不自动等于“当前版本、新手段位、指定位置”。除非查询确实包含这些筛选条件，否则必须写明范围限制。
+
+技能常量可以帮助核对当前缓存中的名称和说明，但不能证明某套加点最优。加点仍要依据本局位置、对线压力、命石/分支和阵容功能判断；精确技能交互应优先用当前版本官方信息交叉核对。
+
+需要只读取一名英雄的技能而不把完整常量文件载入上下文时，运行：
+
+```powershell
+& "scripts\get-hero-abilities.ps1" -HeroName luna
+```
+
+也可以传入 OpenDota 英雄 ID，例如 `-HeroId 48`。输出中的技能、天赋和命石仍是缓存元数据，不能直接当作推荐加点。
 
 ## 可以怎样表述
 

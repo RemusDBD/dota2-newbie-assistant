@@ -12,9 +12,11 @@ $headers = @{
 }
 
 $endpoints = [ordered]@{
-    "hero-stats.json" = "https://api.opendota.com/api/heroStats"
-    "heroes.json"     = "https://api.opendota.com/api/constants/heroes"
-    "items.json"      = "https://api.opendota.com/api/constants/items"
+    "hero-stats.json"     = "https://api.opendota.com/api/heroStats"
+    "heroes.json"         = "https://api.opendota.com/api/constants/heroes"
+    "items.json"          = "https://api.opendota.com/api/constants/items"
+    "hero-abilities.json" = "https://api.opendota.com/api/constants/hero_abilities"
+    "abilities.json"      = "https://api.opendota.com/api/constants/abilities"
 }
 
 $writtenFiles = @()
