@@ -1,5 +1,5 @@
 interface:
   display_name: "Dota 2 新手助手"
-  short_description: "基于语音或截图提供新手加点、出装、克制、躲招与团战速报"
+  short_description: "基于语音或截图提供新手加点、出装、克制、功能品与视野速报"
   brand_color: "#D35445"
-  default_prompt: "使用 $dota2-newbie-assistant，根据我的英雄、位置和对线对手生成含技能加点、出装、克制与关键技能应对的新手本局速报。"
+  default_prompt: "使用 $dota2-newbie-assistant，根据我的英雄、位置和对线对手生成含加点、出装、克制、功能消耗品与前中后期视野的新手本局速报。"

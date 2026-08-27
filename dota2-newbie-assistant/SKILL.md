@@ -1,8 +1,8 @@
 ---
 name: dota2-newbie-assistant
-description: 为 Dota 2 新手根据中文语音、文字或阵容截图生成本局技能加点、出装路线、对线技巧、英雄克制、敌方关键技能应对和前中后期行动建议。用户说“Dota速报”、报出自己的英雄/位置/对线对手、粘贴选人截图，或在对局中询问加点、下一件装备和打法时使用。不用于职业级 BP、博彩预测、代打或自动操作游戏。
+description: 为 Dota 2 新手根据中文语音、文字或阵容截图生成本局技能加点、出装路线、对线技巧、英雄克制、关键技能应对、功能消耗品与前中后期视野建议。用户说“Dota速报”、报出自己的英雄/位置/对线对手、粘贴选人截图，或在对局中询问加点、真假眼、粉、榴弹、下一件装备和打法时使用。不用于职业级 BP、博彩预测、代打或自动操作游戏。
 metadata:
-  short-description: Dota 2 新手本局加点、出装、克制与团战助手
+  short-description: Dota 2 新手本局加点、出装、视野与团战助手
 ---
 
 # Dota 2 新手助手
@@ -12,9 +12,9 @@ metadata:
 ## 先判断模式
 
 - **极速语音**：用户说“Dota速报”“速报”“开局”，或只报出自己的英雄、位置和本路对手。立即回答，不联网、不运行脚本、不追问完整阵容。读取 [current-patch.md](references/current-patch.md) 和 [modes-and-output.md](references/modes-and-output.md)。
-- **截图完整分析**：用户粘贴选人或阵容截图。识别双方英雄并先用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手分析。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md) 和 [modes-and-output.md](references/modes-and-output.md)。
+- **截图完整分析**：用户粘贴选人或阵容截图。识别双方英雄并先用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手分析。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md)、[vision-and-consumables.md](references/vision-and-consumables.md) 和 [modes-and-output.md](references/modes-and-output.md)。
 - **文字完整攻略**：用户给出大部分或全部阵容并要求完整攻略。按截图完整分析处理。
-- **局中求助**：用户报时间、当前装备、局势或某个肥起来的敌人。只回答“下一件装备、接下来3分钟、团战动作”三个问题，不重写整份攻略。
+- **局中求助**：用户报时间、当前装备、局势或某个肥起来的敌人。只回答“下一件装备、当前功能品/视野、接下来3分钟、团战动作”四个问题，不重写整份攻略。
 - **数据依据**：只有用户要求数据、权威性、胜率、样本或详细分析时，才读取 [sources-and-evidence.md](references/sources-and-evidence.md)，并在工具可用时查询或运行脚本。不得为了极速回答等待网络。
 
 语音转写出现近音词或简称时，按 [voice-aliases.md](references/voice-aliases.md) 归一化。只有存在两个同样合理的英雄时才澄清；否则回显“按 X 识别”并继续。
@@ -38,10 +38,11 @@ metadata:
 4. 出装写成“基础路线 + 触发条件分支”，每个大件用一句话说明本局原因。
 5. 根据敌方控制、伤害类型、回复、幻象、隐身、切后排能力，以及己方先手、救人、推线和输出缺口修正路线。
 6. 选出最危险的2～3个敌方技能或大招，说明预兆、躲法、躲不开时的减伤方案和反打窗口。
-7. 前中后期各给一个主任务、一个团战动作、一个常见错误。
-8. 对新手优先推荐容错高、用途清楚、容易按出来的方案；高风险贪装必须标出代价。
+7. 决定当前由谁携带假眼、真眼、粉、榴弹或雾；眼位围绕接下来两分钟的刷钱区、塔、肉山或抓人目标，而不是背固定坐标。
+8. 前中后期各给一个主任务、一个视野区域、一个团战动作和一个常见错误。
+9. 对新手优先推荐容错高、用途清楚、容易按出来的方案；高风险贪装必须标出代价。
 
-详细判断矩阵见 [beginner-decision-rules.md](references/beginner-decision-rules.md)；加点、克制与技能规避规则见 [skills-and-counterplay.md](references/skills-and-counterplay.md)。
+详细判断矩阵见 [beginner-decision-rules.md](references/beginner-decision-rules.md)；加点、克制与技能规避规则见 [skills-and-counterplay.md](references/skills-and-counterplay.md)；路人局功能品和眼位规则见 [vision-and-consumables.md](references/vision-and-consumables.md)。
 
 ## 可靠性边界
 
@@ -52,6 +53,8 @@ metadata:
 - 不把职业局出装直接当作新手答案。统计趋势必须经过位置、操作难度和本局威胁过滤。
 - 不凭旧记忆断言某技能“可驱散、无视黑皇杖、无法躲避”。精确交互没有当前版本依据时，改为可靠的站位、距离、视野或保命建议。
 - 英雄命石、先天技能或分支会改变加点时：完整模式应说明采用的分支；极速模式不知道分支就给两者都安全的主线，不阻塞回答。
+- 不把反隐和视野责任固定推给五号位。路人局中按接触目标和行动区域分配；没有隐身时不要机械要求人人带粉。
+- 不依赖可能随地图版本失效的精确坐标描述眼位；用目标、必经入口、侧翼、传送支援路线和撤退路线表达。
 - 不控制客户端、不读取游戏内存、不执行按键、不提供绕过反作弊的方法。
 
 ## 回答风格

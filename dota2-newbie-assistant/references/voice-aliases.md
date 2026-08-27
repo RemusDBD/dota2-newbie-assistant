@@ -4,6 +4,17 @@
 
 ## 常见简称
 
+### 功能物品
+
+- 假眼、眼 → 侦查守卫（Observer Ward）；若语境是“排眼/反隐”，再判断是否实际指真眼
+- 真眼、蓝眼 → 岗哨守卫（Sentry Ward）
+- 粉、撒粉 → 显影之尘（Dust of Appearance）
+- 雾、开雾 → 诡计之雾（Smoke of Deceit）
+- 榴弹、血雷 → 血腥榴弹（Blood Grenade）
+- 宝石、真视 → 真视宝石（Gem of True Sight）
+
+### 英雄
+
 - 敌法、AM → 敌法师（Anti-Mage）
 - 斧王、辅王 → 斧王（Axe）
 - 冰魂 → 远古冰魄（Ancient Apparition）
