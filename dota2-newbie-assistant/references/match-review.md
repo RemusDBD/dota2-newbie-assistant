@@ -6,7 +6,9 @@
 
 最少输入：`比赛 ID + 英雄名称`。英雄可以属于用户，也可以属于该局其他玩家；不要要求 Steam 账号或假设英雄归属。
 
-在 Skill 根目录运行：
+在 ChatGPT Live 完全语音环境中，用户逐位口述比赛 ID。先归一化数字并分成两组复读确认；确认后直接读取 `https://api.opendota.com/api/matches/{match_id}`。不得要求用户粘贴链接。联网失败时报告状态并询问是否语音重试；没有实际返回数据时不得继续编造复盘。
+
+在支持本地执行的 Skill 环境中运行：
 
 ```powershell
 & "scripts\get-match-review-data.ps1" -MatchId 8461956309 -HeroName "主宰"
