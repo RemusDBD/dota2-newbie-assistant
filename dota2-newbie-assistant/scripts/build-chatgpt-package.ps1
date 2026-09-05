@@ -17,18 +17,21 @@ if (-not $resolvedOutput.StartsWith($resolvedSkillRoot, [System.StringComparison
 
 New-Item -ItemType Directory -Force -Path $resolvedOutput | Out-Null
 
-$outputFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.7.0.md'
-$archiveFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.7.0.zip'
+$outputFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.7.1.md'
+$archiveFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.7.1.zip'
 
 $adapter = @'
 ---
 name: chatgpt-dota2-newbie-assistant
-version: "0.7.0"
+version: "0.7.1"
+author: "TimZhang踢木桩"
 dota_patch: "7.41e"
 target: "ChatGPT Project + Live Voice"
 ---
 
 # ChatGPT Dota 2 新手助手知识包
+
+原作者：**TimZhang踢木桩**
 
 本文件是可直接上传到 ChatGPT 项目的单文件知识包。它合并了 Dota 2 新手助手的入口规则、当前版本、加点与克制、出装决策、功能品与视野、中文语音别名、输出模式、OpenDota 赛后复盘和数据证据规则。
 
@@ -47,7 +50,7 @@ target: "ChatGPT Project + Live Voice"
 
 ## 建议的项目指令
 
-始终把本项目文件 `ChatGPT-Dota2-Newbie-Assistant-v0.7.0.md` 作为 Dota 2 新局指导与赛后复盘的主要规则来源。日常交互全部使用语音；遵守文件顶部的 ChatGPT 项目适配规则，并按需使用文件中的详细决策规则。
+始终把本项目文件 `ChatGPT-Dota2-Newbie-Assistant-v0.7.1.md` 作为 Dota 2 新局指导与赛后复盘的主要规则来源。日常交互全部使用语音；遵守文件顶部的 ChatGPT 项目适配规则，并按需使用文件中的详细决策规则。
 
 ## 内置规则源
 
