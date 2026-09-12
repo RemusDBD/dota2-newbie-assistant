@@ -3,7 +3,7 @@ name: dota2-newbie-assistant
 description: 为 Dota 2 新手提供新局指导和赛后数据复盘。根据中文语音、文字或阵容截图生成加点、出装、对线、克制、功能品与视野建议；或根据比赛 ID 和指定英雄分析出装顺序、经济、正反补、团战与关键转折。用户说“Dota速报”、粘贴阵容、询问局中打法，或说“复盘”并提供对局号时使用。不用于职业级 BP、博彩预测、代打、自动操作或视频逐帧复盘。
 metadata:
   short-description: Dota 2 新局指导与赛后数据复盘助手
-  version: "0.7.1"
+  version: "0.8.0"
   author: "TimZhang踢木桩"
 ---
 
@@ -17,9 +17,10 @@ metadata:
 
 - **ChatGPT Live 完全语音**：用户要求在 ChatGPT Live 中使用时，日常输入全部通过语音完成；首次上传知识包不算日常输入。新局阵容直接口述，比赛 ID 逐位口述并由助手分组复读确认。确认后直接联网查询 OpenDota，不要求用户粘贴编号、网页或 API 链接。读取 [voice-aliases.md](references/voice-aliases.md)、[match-review.md](references/match-review.md) 和 [modes-and-output.md](references/modes-and-output.md)。
 - **极速语音**：用户说“Dota速报”“速报”“开局”，或只报出自己的英雄、位置和本路对手。立即回答，不联网、不运行脚本、不追问完整阵容。读取 [current-patch.md](references/current-patch.md) 和 [modes-and-output.md](references/modes-and-output.md)。
-- **截图分层攻略**：用户粘贴选人或阵容截图。识别双方英雄并用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手，默认按“极简结论 + 必要展开”输出。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md)、[vision-and-consumables.md](references/vision-and-consumables.md) 和 [modes-and-output.md](references/modes-and-output.md)。
+- **截图分层攻略**：用户粘贴选人或阵容截图。识别双方英雄并用一行回显；结合用户给出的自己的英雄、1～5号位和本路1～2名对手，默认按“极简结论 + 必要展开”输出。截图不能可靠证明分路，不要仅凭头像猜位置。读取 [beginner-decision-rules.md](references/beginner-decision-rules.md)、[fundamentals-operations.md](references/fundamentals-operations.md)、[skills-and-counterplay.md](references/skills-and-counterplay.md)、[vision-and-consumables.md](references/vision-and-consumables.md) 和 [modes-and-output.md](references/modes-and-output.md)。
 - **文字分层攻略**：用户给出自己的英雄、对线对手或双方阵容时，按截图分层攻略处理。
 - **详细新局攻略**：只有用户明确说“详细攻略、展开、解释依据”时才输出分阶段长版；游戏开始、对线中和局中求助不自动进入此模式。
+- **运营与基础思路**：用户询问打钱路线、兵线处理、拉野、游走、前中期决策、出装底层逻辑或四号位开局时，读取 [fundamentals-operations.md](references/fundamentals-operations.md)。优先给“目标—行动—不做的条件”，不背诵固定分钟数或过期地图点位。
 - **局中求助**：用户报时间、当前装备、局势或某个肥起来的敌人。只回答“下一件装备、当前功能品/视野、接下来3分钟、团战动作”四个问题，不重写整份攻略。
 - **赛后数据复盘**：用户说“复盘、赛后分析”并提供比赛 ID 与要复盘的英雄名称。本地环境运行 `scripts/get-match-review-data.ps1`；没有本地执行能力的 ChatGPT 环境直接读取 OpenDota `/api/matches/{match_id}`。再读取 [match-review.md](references/match-review.md)、[sources-and-evidence.md](references/sources-and-evidence.md) 和 [modes-and-output.md](references/modes-and-output.md)。只做数据复盘，不下载录像、不切帧，也不要求该英雄属于用户本人。
 - **数据依据**：只有用户要求数据、权威性、胜率、样本或详细分析时，才读取 [sources-and-evidence.md](references/sources-and-evidence.md)，并在工具可用时查询或运行脚本。不得为了极速回答等待网络。
@@ -66,7 +67,7 @@ metadata:
 6. 将原始数据明确写成“数据事实”，将位置、参团意图和胜负原因写成“复盘判断”；不把相关变化断言为唯一因果。
 7. 结尾只保留三条下局可执行规则，不输出视频、切帧或无法由基础数据证明的微操结论。
 
-详细判断矩阵见 [beginner-decision-rules.md](references/beginner-decision-rules.md)；加点、克制与技能规避规则见 [skills-and-counterplay.md](references/skills-and-counterplay.md)；路人局功能品和眼位规则见 [vision-and-consumables.md](references/vision-and-consumables.md)。
+详细判断矩阵见 [beginner-decision-rules.md](references/beginner-decision-rules.md)；运营、出装与四号位的底层框架见 [fundamentals-operations.md](references/fundamentals-operations.md)；加点、克制与技能规避规则见 [skills-and-counterplay.md](references/skills-and-counterplay.md)；路人局功能品和眼位规则见 [vision-and-consumables.md](references/vision-and-consumables.md)。
 
 ## 可靠性边界
 
@@ -92,7 +93,7 @@ Live 语音中不要朗读 Markdown 标记、网址、引用列表或密集原�
 
 ## Skill 版本
 
-- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.7.1｜Dota 7.41e`。
+- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.8.0｜Dota 7.41e`。
 - 每份游戏攻略首行显示这两个版本；不要在局中正文展开 Changelog。
 - 维护本 Skill 时先读取 [CHANGELOG.md](CHANGELOG.md)。新增能力提升次版本，例如 `0.6.0 → 0.7.0`；小修正提升修订版本，例如 `0.6.0 → 0.6.1`；不兼容的输出或结构变化才提升主版本。
 - 每次提交功能或规则更新时，同步修改 `metadata.version`、相关界面提示以及 Changelog；同一次更新只记录一个版本。
