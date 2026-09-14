@@ -324,7 +324,7 @@ function Get-HeroDisplay {
 }
 
 $headers = @{
-    "User-Agent" = "dota2-newbie-assistant/0.9.0 (OpenDota match review)"
+    "User-Agent" = "dota2-newbie-assistant/0.9.1 (OpenDota match review)"
 }
 $matchUri = "https://api.opendota.com/api/matches/$MatchId"
 
