@@ -13,6 +13,14 @@ param(
     [ValidateRange(5, 120)]
     [int]$TimeoutSec = 30,
 
+    [ValidateRange(1, 600)]
+    [int]$ParseWaitSec = 180,
+
+    [ValidatePattern('^[1-9][0-9]*$')]
+    [string]$ParseJobId,
+
+    [switch]$SkipParse,
+
     [string]$DataDirectory = (Join-Path $PSScriptRoot "..\references\data")
 )
 
@@ -316,7 +324,7 @@ function Get-HeroDisplay {
 }
 
 $headers = @{
-    "User-Agent" = "dota2-newbie-assistant/0.6.0 (OpenDota match review)"
+    "User-Agent" = "dota2-newbie-assistant/0.9.0 (OpenDota match review)"
 }
 $matchUri = "https://api.opendota.com/api/matches/$MatchId"
 
@@ -329,6 +337,9 @@ catch {
 
 if ($null -eq $match -or @($match.players).Count -eq 0) {
     throw "OpenDota returned no player data for match $MatchId."
+}
+if ([long]$match.match_id -ne $MatchId) {
+    throw "OpenDota returned a different match ID for $MatchId."
 }
 
 $resolvedHero = Resolve-HeroInput
@@ -357,6 +368,17 @@ if ($null -eq $selectedPlayer) {
     throw "Hero '$([string]$resolvedHero.name_loc)' is not in match $MatchId. Match heroes: $($matchHeroNames -join ', ')."
 }
 
+$parseOptions = @{ Match = $match; MatchId = $MatchId; Headers = $headers; TimeoutSec = $TimeoutSec; MaxWaitSec = $ParseWaitSec; SkipParse = $SkipParse }
+if (-not [string]::IsNullOrWhiteSpace($ParseJobId)) { $parseOptions.ParseJobId = $ParseJobId }
+$parseResult = & (Join-Path $PSScriptRoot 'ensure-match-parsed.ps1') @parseOptions
+$match = $parseResult.match
+$players = @($match.players)
+$selectedIndex = -1
+for ($index = 0; $index -lt $players.Count; $index++) {
+    if ([int]$players[$index].hero_id -eq [int]$resolvedHero.id) { $selectedIndex = $index; break }
+}
+if ($selectedIndex -lt 0) { throw 'Selected hero is missing from refreshed match data.' }
+$selectedPlayer = $players[$selectedIndex]
 $selectedIsRadiant = Test-IsRadiant $selectedPlayer
 $selectedWon = if ($selectedIsRadiant) { [bool]$match.radiant_win } else { -not [bool]$match.radiant_win }
 $purchaseLog = @(Get-PropertyArray -Object $selectedPlayer -Name "purchase_log")
@@ -609,6 +631,7 @@ $result = [ordered]@{
     provider = "OpenDota"
     source = $matchUri
     dataStatus = $dataStatus
+    parse = $parseResult.parse
     availability = [ordered]@{
         purchaseTimeline = $hasPurchaseTimeline
         economyTimeline = $hasEconomyTimeline

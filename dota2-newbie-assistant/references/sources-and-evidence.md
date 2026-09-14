@@ -31,7 +31,7 @@ Liquipedia 自动访问必须使用其 API，不能抓取生成后的 HTML；尽
 & "scripts\get-match-review-data.ps1" -MatchId 8461956309 -HeroName "主宰"
 ```
 
-脚本只发送读取比赛数据的 GET 请求，不下载录像，也不自动调用 `/api/request/{match_id}` 提交解析任务。`dataStatus=basic` 时只使用结算数据；只有返回 `purchase_log`、`gold_t`、`lh_t` 等字段时才进行精确时间线分析。
+脚本先读取比赛，尚未解析时默认通过 `POST /api/request/{match_id}` 自动提交一次解析并等待，再读取最新比赛数据；具体状态、等待上限和继续任务方式见 [match-review.md](match-review.md)。录像由 OpenDota 解析，本地不下载。解析未完成时如实报告原因；`dataStatus=basic` 时只使用结算数据，只有实际返回时间线字段时才进行对应的精确时间线分析。
 
 这些公共端点不自动等于“当前版本、新手段位、指定位置”。除非查询确实包含这些筛选条件，否则必须写明范围限制。
 

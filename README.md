@@ -10,6 +10,7 @@
 - 支持“我的英雄 + 位置 + 本路对手”的极速开局建议。
 - 提供技能加点、核心/分支出装、关键技能规避、真假眼/粉/雾建议，以及前中后期行动重点。
 - 通过比赛 ID + 英雄名称读取 OpenDota，区分数据事实和复盘判断，分析出装、经济、团战和目标事件。
+- Codex 本地复盘会自动检查解析状态，未解析时提交 OpenDota 录像解析并等待完成后再分析，无需手动点击；超时或失败会说明原因。ChatGPT / Live 自动提交需要可执行 POST 的 HTTP 工具。
 - 支持 ChatGPT Live 的完全语音流程：口述阵容，或逐位口述比赛 ID 并复读确认。
 - 内置新手运营框架：围绕兵线、资源、装备窗口、地图压力与团战转化来做决策，而非背固定套路。
 
@@ -33,8 +34,8 @@
 
 下载并上传最新的单文件知识包：
 
-- [ChatGPT-Dota2-Newbie-Assistant-v0.8.0.md](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.8.0.md)
-- [ChatGPT-Dota2-Newbie-Assistant-v0.8.0.zip](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.8.0.zip)
+- [ChatGPT-Dota2-Newbie-Assistant-v0.9.0.md](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.0.md)
+- [ChatGPT-Dota2-Newbie-Assistant-v0.9.0.zip](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.0.zip)
 
 之后可完全口述阵容、位置、同路英雄和比赛 ID。Live 默认先给可立即执行的核心结论；说“详细说”再展开指定部分。
 
