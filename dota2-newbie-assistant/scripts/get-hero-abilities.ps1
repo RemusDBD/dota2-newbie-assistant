@@ -82,6 +82,14 @@ $resolvedTalents = foreach ($talent in $heroEntry.talents) {
     }
 }
 
+$patchNotes = @(Get-ChildItem -LiteralPath $DataDirectory -Filter 'patchnotes-*-schinese.json' -File | ForEach-Object {
+    $patch = Get-Content -LiteralPath $_.FullName -Raw -Encoding UTF8 | ConvertFrom-Json
+    $changes = @($patch.heroes | Where-Object { [int]$_.hero_id -eq [int]$hero.id })
+    if ($patch.success -and $changes.Count -gt 0) {
+        [ordered]@{ patch = $patch.patch_number; timestamp = $patch.patch_timestamp; changes = $changes }
+    }
+} | Sort-Object { $_.timestamp })
+
 $result = [ordered]@{
     provider = "OpenDota cached constants"
     heroId = [int]$hero.id
@@ -90,6 +98,7 @@ $result = [ordered]@{
     abilities = @($resolvedAbilities)
     talents = @($resolvedTalents)
     facets = @($heroEntry.facets)
+    officialPatchChanges = $patchNotes
     limitation = "Metadata helps verify names and descriptions; it does not establish the optimal leveling order or guarantee current-patch interactions."
 }
 

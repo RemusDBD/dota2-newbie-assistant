@@ -17,15 +17,15 @@ if (-not $resolvedOutput.StartsWith($resolvedSkillRoot, [System.StringComparison
 
 New-Item -ItemType Directory -Force -Path $resolvedOutput | Out-Null
 
-$outputFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.9.1.md'
-$archiveFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.9.1.zip'
+$outputFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.9.2.md'
+$archiveFile = Join-Path $resolvedOutput 'ChatGPT-Dota2-Newbie-Assistant-v0.9.2.zip'
 
 $adapter = @'
 ---
 name: chatgpt-dota2-newbie-assistant
-version: "0.9.1"
+version: "0.9.2"
 author: "TimZhang踢木桩"
-dota_patch: "7.41e"
+dota_patch: "7.41f"
 target: "ChatGPT Project + Live Voice"
 ---
 
@@ -50,7 +50,7 @@ target: "ChatGPT Project + Live Voice"
 
 ## 建议的项目指令
 
-始终把本项目文件 `ChatGPT-Dota2-Newbie-Assistant-v0.9.1.md` 作为 Dota 2 新局指导与赛后复盘的主要规则来源。日常交互全部使用语音；遵守文件顶部的 ChatGPT 项目适配规则，并按需使用文件中的详细决策规则。
+始终把本项目文件 `ChatGPT-Dota2-Newbie-Assistant-v0.9.2.md` 作为 Dota 2 新局指导与赛后复盘的主要规则来源。日常交互全部使用语音；遵守文件顶部的 ChatGPT 项目适配规则，并按需使用文件中的详细决策规则。
 
 ## 内置规则源
 
@@ -59,6 +59,7 @@ target: "ChatGPT Project + Live Voice"
 $sourceFiles = @(
     'SKILL.md',
     'references/current-patch.md',
+    'references/patch-7.41f.md',
     'references/beginner-decision-rules.md',
     'references/fundamentals-operations.md',
     'references/skills-and-counterplay.md',

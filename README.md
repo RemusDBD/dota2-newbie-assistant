@@ -35,8 +35,8 @@
 
 下载并上传最新的单文件知识包：
 
-- [ChatGPT-Dota2-Newbie-Assistant-v0.9.1.md](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.1.md)
-- [ChatGPT-Dota2-Newbie-Assistant-v0.9.1.zip](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.1.zip)
+- [ChatGPT-Dota2-Newbie-Assistant-v0.9.2.md](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.2.md)
+- [ChatGPT-Dota2-Newbie-Assistant-v0.9.2.zip](dota2-newbie-assistant/dist/ChatGPT-Dota2-Newbie-Assistant-v0.9.2.zip)
 
 之后可完全口述阵容、位置、同路英雄和比赛 ID。Live 默认先给可立即执行的核心结论；说“详细说”再展开指定部分。
 
@@ -48,6 +48,9 @@
 - [构建 ChatGPT 单文件包](dota2-newbie-assistant/scripts/build-chatgpt-package.ps1)
 
 ## 数据与版本边界
+
+当前支持：**助手 v0.9.2｜Dota 7.41f**（2026-09-16 核验）。[7.41f 玩家解读与口播稿](docs/7.41f-player-guide.md)。
+
 
 - 新局建议优先采用当前 Skill 中标记的 Dota 2 补丁；具体英雄、命石、装备和地图交互会随游戏更新改变。
 - 赛后复盘只基于 OpenDota 实际返回字段。数据不完整时会降级为基础结算复盘，不编造购买时间、团战过程或站位。

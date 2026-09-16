@@ -3,7 +3,7 @@ name: dota2-newbie-assistant
 description: 为 Dota 2 新手提供新局指导和赛后数据复盘。根据中文语音、文字或阵容截图生成加点、出装、对线、克制、功能品与视野建议；或根据比赛 ID 和指定英雄分析出装顺序、经济、正反补、团战与关键转折。用户说“Dota速报”、粘贴阵容、询问局中打法，或说“复盘”并提供对局号时使用。不用于职业级 BP、博彩预测、代打、自动操作或视频逐帧复盘。
 metadata:
   short-description: Dota 2 新局指导与赛后数据复盘助手
-  version: "0.9.1"
+  version: "0.9.2"
   author: "TimZhang踢木桩"
 ---
 
@@ -26,6 +26,10 @@ metadata:
 - **数据依据**：只有用户要求数据、权威性、胜率、样本或详细分析时，才读取 [sources-and-evidence.md](references/sources-and-evidence.md)，并在工具可用时查询或运行脚本。不得为了极速回答等待网络。
 
 语音转写出现近音词或简称时，按 [voice-aliases.md](references/voice-aliases.md) 归一化。只有存在两个同样合理的英雄时才澄清；否则回显“按 X 识别”并继续。
+
+## 7.41f 版本适配
+
+新局、出装、技能与版本解读先读取 [7.41f 玩家决策变化](references/patch-7.41f.md)。官方补丁优先于 OpenDota 缓存中的冲突数值；最新抓取不代表常量已更新。旧比赛按比赛当时版本复盘，不把 7.41f 改动倒套到历史对局。
 
 ## 最少输入
 
@@ -95,7 +99,7 @@ Live 语音中不要朗读 Markdown 标记、网址、引用列表或密集原�
 
 ## Skill 版本
 
-- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.9.1｜Dota 7.41e`。
+- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.9.2｜Dota 7.41f`。
 - 每份游戏攻略首行显示这两个版本；不要在局中正文展开 Changelog。
 - 维护本 Skill 时先读取 [CHANGELOG.md](CHANGELOG.md)。新增能力提升次版本，例如 `0.6.0 → 0.7.0`；小修正提升修订版本，例如 `0.6.0 → 0.6.1`；不兼容的输出或结构变化才提升主版本。
 - 每次提交功能或规则更新时，同步修改 `metadata.version`、相关界面提示以及 Changelog；同一次更新只记录一个版本。

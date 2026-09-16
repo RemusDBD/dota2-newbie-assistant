@@ -1,5 +1,5 @@
 {
-  "fetchedAtUtc": "2026-08-27T07:51:42.6862804Z",
+  "fetchedAtUtc": "2026-09-16T05:55:01.5017838Z",
   "provider": "OpenDota + Valve Dota 2 datafeed",
   "providers": [
     "OpenDota",
@@ -16,7 +16,12 @@
     "hero-abilities.json",
     "abilities.json",
     "heroes-schinese.json",
-    "items-schinese.json"
+    "items-schinese.json",
+    "patchnotes-7.41f-schinese.json"
   ],
+  "configuredPatch": "7.41f",
+  "patchNotesSource": "https://www.dota2.com/datafeed/patchnotes?version=7.41f&language=schinese",
+  "constantsPatchVerified": false,
+  "constantsNote": "Fresh downloads do not guarantee current-patch constants. Official patch notes override conflicting OpenDota values; never label heroStats as patch-filtered.",
   "scopeNote": "Public OpenDota snapshots plus Valve Simplified Chinese hero and item names; statistics are not automatically filtered to patch, role, rank, or beginner bracket."
 }
