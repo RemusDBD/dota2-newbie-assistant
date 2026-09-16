@@ -3,7 +3,7 @@ name: dota2-newbie-assistant
 description: 为 Dota 2 新手提供新局指导和赛后数据复盘。根据中文语音、文字或阵容截图生成加点、出装、对线、克制、功能品与视野建议；或根据比赛 ID 和指定英雄分析出装顺序、经济、正反补、团战与关键转折。用户说“Dota速报”、粘贴阵容、询问局中打法，或说“复盘”并提供对局号时使用。不用于职业级 BP、博彩预测、代打、自动操作或视频逐帧复盘。
 metadata:
   short-description: Dota 2 新局指导与赛后数据复盘助手
-  version: "0.9.2"
+  version: "0.9.3"
   author: "TimZhang踢木桩"
 ---
 
@@ -63,7 +63,7 @@ metadata:
 
 ## 赛后复盘顺序
 
-完整文字复盘默认拆成三个可独立复制的纯文本块：`【1/3 本局结论与对线】`、`【2/3 中后期节奏与关键转折】`、`【3/3 出装评价与下局改进】`。每块含标题、标点和网址不超过900字符，为单条1000字的社媒回复留余量；发送前有本地工具就实际计数。具体分配与复制格式见 [modes-and-output.md](references/modes-and-output.md)。以下是分析顺序，不是额外输出的七个板块；Live 语音和单点追问保留原有简短模式。
+完整文字复盘使用一个完整回答，采用正常正文和小标题，不放进代码块、不拆成三条回复，也不设置每块字数上限。主要板块之间保留三个空白行（比通常多两个空行），便于辨认与复制。具体排版见 [modes-and-output.md](references/modes-and-output.md)；Live语音和单点追问保留原有简短模式。
 
 1. 用比赛 ID 查询 OpenDota，并按英雄名称从十名玩家中选定唯一目标。未解析时默认自动提交 OpenDota 解析任务并等待，重新取得解析数据后再分析；无需用户手动点击或再次确认。本地脚本自动处理，其他环境按 [match-review.md](references/match-review.md) 的能力边界执行。
 2. 先报告数据完整度：基础结算、分钟时间线、购买记录、团战和目标事件分别是否可用。
@@ -99,7 +99,7 @@ Live 语音中不要朗读 Markdown 标记、网址、引用列表或密集原�
 
 ## Skill 版本
 
-- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.9.2｜Dota 7.41f`。
+- 当前 Skill 版本取自本文件 `metadata.version`，游戏补丁取自 [current-patch.md](references/current-patch.md)。两者必须分开显示，例如：`助手 v0.9.3｜Dota 7.41f`。
 - 每份游戏攻略首行显示这两个版本；不要在局中正文展开 Changelog。
 - 维护本 Skill 时先读取 [CHANGELOG.md](CHANGELOG.md)。新增能力提升次版本，例如 `0.6.0 → 0.7.0`；小修正提升修订版本，例如 `0.6.0 → 0.6.1`；不兼容的输出或结构变化才提升主版本。
 - 每次提交功能或规则更新时，同步修改 `metadata.version`、相关界面提示以及 Changelog；同一次更新只记录一个版本。

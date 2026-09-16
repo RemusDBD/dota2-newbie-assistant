@@ -1,5 +1,5 @@
 interface:
   display_name: "Dota 2 新手助手"
-  short_description: "v0.9.2｜语音新局、运营指导与比赛ID复盘"
+  short_description: "v0.9.3｜语音新局、运营指导与比赛ID复盘"
   brand_color: "#D35445"
   default_prompt: "使用 $dota2-newbie-assistant，通过纯语音为我的阵容生成新局攻略，或根据我口述的比赛ID和指定英雄生成赛后复盘。"
